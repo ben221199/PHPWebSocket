@@ -13,8 +13,9 @@ class WebSocketServer{
 		$this->sendHeaders();
 	}
 	
-	public function sendFrame(WebSocketFrame $frame){	
-		echo($frame);
+	public function sendFrame(WebSocketFrame $frame){
+		fwrite($this->OUT,$frame);
+		fflush($this->OUT);
 		ob_flush();
 		flush();
 	}
